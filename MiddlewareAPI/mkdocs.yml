@@ -1,0 +1,22 @@
+site_name: Content Resource API
+site_description: Authenticated read-only access to approved WebDAV resources
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - search.suggest
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          paths: [src]
+
+nav:
+  - Home: index.md
+  - Getting Started: getting-started.md
+
+docs_dir: docs
+strict: true

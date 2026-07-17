@@ -1,0 +1,18 @@
+There's no blanket prohibition — customers do use WebDAV (via Oxygen) to work with files in Heretto CCMS — but there are clear restrictions: only Oxygen is an approved/supported client, and customer access is scoped to the `repositories` folder rather than the full backend.
+
+**What's allowed**
+- Customers with Author or Administrator roles can connect to the `repositories` folder via WebDAV; only internal Sys Admins can see the entire backend [[1]](https://heretto.slack.com/archives/C01K1D3LGH2/p1724787144345579?thread_ts=1724787144.345579&cid=C01K1D3LGH2).
+- Common customer use cases: connecting Oxygen for editing, creating/editing Schematron rules, and (in specific cases) uploading full SKOS taxonomy files directly, bypassing the built-in taxonomy editor [[2]](https://jorsek.atlassian.net/wiki/spaces/PM/pages/1538097171/WebDAV+Deprecation) [[3]](https://heretto.slack.com/archives/C018Z42UXNE/p1783731254922009?thread_ts=1783648486.204699&cid=C018Z42UXNE).
+- Heretto's public docs cover configuring Oxygen-to-CCMS WebDAV connections and mapping to the repositories directory [[3]](https://heretto.slack.com/archives/C018Z42UXNE/p1783731254922009?thread_ts=1783648486.204699&cid=C018Z42UXNE).
+
+**What's restricted/prohibited**
+- **Only Oxygen is supported.** When CompTIA asked about connecting VS Code via WebDAV, the answer was explicit: "not supported. it's not secure" [[4]](https://heretto.slack.com/archives/C064CGZ3U77/p1746039665507709?thread_ts=1746039665.507709&cid=C064CGZ3U77). A follow-up confirmed: "No IDEs are approved or tested by us for WebDAV connections. Oxygen is the only approved and tested connection." Alternative for other tools: download/upload content instead [[5]](https://heretto.slack.com/archives/C064CGZ3U77/p1746471413983219?thread_ts=1746039665.507709&cid=C064CGZ3U77).
+- **Scoped access.** Customers can't access the entire backend via WebDAV — only the repositories directory, per role permissions [[3]](https://heretto.slack.com/archives/C018Z42UXNE/p1783731254922009?thread_ts=1783648486.204699&cid=C018Z42UXNE) [[1]](https://heretto.slack.com/archives/C01K1D3LGH2/p1724787144345579?thread_ts=1724787144.345579&cid=C01K1D3LGH2).
+- **Internal deprecation effort.** A Confluence planning doc lists real security/reliability drawbacks (e.g., some files expose passwords if accessed the wrong way, file locking issues, poor performance, no incremental sync) and proposes replacing WebDAV with an Oxygen add-on built on the REST API. As of that document, "WebDAV support is no longer used as a normal operational tool by CSMs, CSCs or customers" was listed as a requirement — but marked "still being debated" [[2]](https://jorsek.atlassian.net/wiki/spaces/PM/pages/1538097171/WebDAV+Deprecation). This appears to be a longer-term direction rather than a finalized policy — worth confirming current status with Tracy Baker or PS if this affects a live customer conversation.
+
+*References*
+[1] [#engineering-cobrakai (Slack) - Aug 27, 2024](https://heretto.slack.com/archives/C01K1D3LGH2/p1724787144345579?thread_ts=1724787144.345579&cid=C01K1D3LGH2)
+[2] [WebDAV Deprecation (Confluence, PM space)](https://jorsek.atlassian.net/wiki/spaces/PM/pages/1538097171/WebDAV+Deprecation)
+[3] [#ps-office-hours (Slack) - Jul 10, 2026](https://heretto.slack.com/archives/C018Z42UXNE/p1783731254922009?thread_ts=1783648486.204699&cid=C018Z42UXNE)
+[4] [#csm-office-hours (Slack) - Apr 30, 2025](https://heretto.slack.com/archives/C064CGZ3U77/p1746039665507709?thread_ts=1746039665.507709&cid=C064CGZ3U77)
+[5] [#csm-office-hours (Slack) - May 5, 2025](https://heretto.slack.com/archives/C064CGZ3U77/p1746471413983219?thread_ts=1746039665.507709&cid=C064CGZ3U77)

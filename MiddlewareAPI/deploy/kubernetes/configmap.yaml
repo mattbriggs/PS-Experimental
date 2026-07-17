@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: content-resource-api-config
+  namespace: content-resources
+  labels:
+    app.kubernetes.io/name: content-resource-api
+    app.kubernetes.io/component: config
+data:
+  APP_LOG_LEVEL: "INFO"
+  APP_METRICS_ENABLED: "true"
+  APP_READINESS_REQUIRES_WEBDAV: "true"
+  APP_REGISTRY_PATH: "/app/config/registry.yaml"
+  APP_WEBDAV_MAX_CONCURRENCY: "10"

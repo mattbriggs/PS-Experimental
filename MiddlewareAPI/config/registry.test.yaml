@@ -1,0 +1,39 @@
+schema_version: "1"
+
+categories:
+  - name: schematron
+    owner: test-team
+    listing_enabled: true
+    allowed_scopes:
+      - schematron:read
+    allowed_extensions:
+      - .sch
+    size_limit_bytes: 1048576
+    upstream_root: schematron/
+    resources:
+      - public_filename: test-rules.sch
+        upstream_object: schematron/test-rules.sch
+        owner: test-team
+        enabled: true
+        restricted: false
+      - public_filename: disabled-rules.sch
+        upstream_object: schematron/disabled-rules.sch
+        owner: test-team
+        enabled: false
+        restricted: false
+
+  - name: taxonomy
+    owner: test-team
+    listing_enabled: true
+    allowed_scopes:
+      - taxonomy:read
+    allowed_extensions:
+      - .json
+    size_limit_bytes: 1048576
+    upstream_root: taxonomy/
+    resources:
+      - public_filename: test-taxonomy.json
+        upstream_object: taxonomy/test-taxonomy.json
+        owner: test-team
+        enabled: true
+        restricted: false

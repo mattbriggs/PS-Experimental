@@ -1,0 +1,90 @@
+services:
+  api:
+    build:
+      context: .
+      target: runtime
+    image: content-resource-api:latest
+    container_name: content-resource-api
+    restart: unless-stopped
+    read_only: true
+    tmpfs:
+      - /tmp/app:mode=1700,uid=1000,gid=1000
+      - /tmp:mode=1777
+    networks:
+      - internal
+      - external
+    ports:
+      - "127.0.0.1:8080:8080"
+    environment:
+      APP_WEBDAV_BASE_URL: ${APP_WEBDAV_BASE_URL:-http://webdav:80}
+      APP_REGISTRY_PATH: /app/config/registry.yaml
+      APP_LOG_LEVEL: INFO
+      APP_METRICS_ENABLED: "true"
+      APP_READINESS_REQUIRES_WEBDAV: "true"
+    env_file:
+      - path: .env
+        required: false
+    volumes:
+      - type: bind
+        source: ./config/registry.yaml
+        target: /app/config/registry.yaml
+        read_only: true
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8080/api/resources/v1/health/live')"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    depends_on:
+      webdav:
+        condition: service_started
+
+  webdav:
+    image: bytemark/webdav:latest
+    container_name: content-webdav
+    restart: unless-stopped
+    networks:
+      - internal
+    environment:
+      AUTH_TYPE: Digest
+      USERNAME: ${WEBDAV_USERNAME:-webdav}
+      PASSWORD: ${WEBDAV_PASSWORD:-changeme}
+    volumes:
+      - webdav-data:/var/lib/dav
+
+  prometheus:
+    image: prom/prometheus:latest
+    profiles: [observability]
+    networks:
+      - internal
+    volumes:
+      - ./deploy/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus-data:/prometheus
+
+  grafana:
+    image: grafana/grafana:latest
+    profiles: [observability]
+    networks:
+      - internal
+    ports:
+      - "127.0.0.1:3000:3000"
+    volumes:
+      - grafana-data:/var/lib/grafana
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_PASSWORD:-admin}
+
+networks:
+  internal:
+    driver: bridge
+    internal: true
+  external:
+    driver: bridge
+
+volumes:
+  webdav-data:
+  prometheus-data:
+  grafana-data:

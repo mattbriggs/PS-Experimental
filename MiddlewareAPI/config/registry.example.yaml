@@ -1,0 +1,35 @@
+schema_version: "1"
+
+categories:
+  - name: schematron
+    owner: content-team
+    listing_enabled: true
+    allowed_scopes:
+      - schematron:read
+    allowed_extensions:
+      - .sch
+    size_limit_bytes: 1048576
+    upstream_root: schematron/
+    resources:
+      - public_filename: base-rules.sch
+        upstream_object: schematron/base-rules.sch
+        owner: content-team
+        enabled: true
+        restricted: false
+
+  - name: taxonomy
+    owner: content-team
+    listing_enabled: true
+    allowed_scopes:
+      - taxonomy:read
+    allowed_extensions:
+      - .json
+      - .xml
+    size_limit_bytes: 2097152
+    upstream_root: taxonomy/
+    resources:
+      - public_filename: product-taxonomy.json
+        upstream_object: taxonomy/product-taxonomy.json
+        owner: content-team
+        enabled: true
+        restricted: false

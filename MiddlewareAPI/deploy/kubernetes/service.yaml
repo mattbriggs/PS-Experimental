@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: content-resource-api
+  namespace: content-resources
+  labels:
+    app.kubernetes.io/name: content-resource-api
+    app.kubernetes.io/component: api
+spec:
+  selector:
+    app.kubernetes.io/name: content-resource-api
+  ports:
+    - name: http
+      port: 80
+      targetPort: http
+      protocol: TCP
+  type: ClusterIP

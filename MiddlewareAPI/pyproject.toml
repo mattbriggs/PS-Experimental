@@ -1,0 +1,92 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "content-resource-api"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi[standard]>=0.115",
+    "uvicorn[standard]>=0.30",
+    "httpx>=0.27",
+    "pydantic>=2.7",
+    "pydantic-settings>=2.3",
+    "structlog>=24.2",
+    "python-jose[cryptography]>=3.3",
+    "PyYAML>=6.0",
+    "prometheus-client>=0.20",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.2",
+    "pytest-asyncio>=0.23",
+    "pytest-mock>=3.14",
+    "pytest-cov>=5.0",
+    "hypothesis>=6.100",
+    "ruff>=0.4",
+    "mypy>=1.10",
+    "bandit>=1.7",
+    "types-PyYAML",
+    "httpx",
+    "anyio[trio]",
+]
+docs = [
+    "mkdocs-material>=9.5",
+    "mkdocstrings[python]>=0.25",
+]
+
+[project.scripts]
+content-resource-api = "content_resource_api.__main__:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/content_resource_api"]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "UP", "S", "B", "A", "C4", "SIM", "TCH"]
+ignore = [
+    "N818",  # Exception naming convention — domain errors use domain names not Error suffix
+    "N815",  # Mixed-case field names — required for JSON camelCase output
+    "S104",  # Binding to all interfaces — required for containerized server
+]
+
+[tool.ruff.lint.per-file-ignores]
+# Pydantic models require runtime imports for all field types — TCH rules are incompatible here
+"src/content_resource_api/domain/models.py" = ["TC001", "TC002", "TC003"]
+# Test files: asserts, hardcoded test credentials, and line length are all idiomatic
+"tests/**" = ["S101", "S105", "S106", "E501"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[tool.coverage.run]
+source = ["src"]
+branch = true
+omit = [
+    # Pure Protocol stubs — abstract interface declarations, not executable
+    "src/content_resource_api/ports/audit.py",
+    "src/content_resource_api/ports/authentication.py",
+    "src/content_resource_api/ports/clock.py",
+    "src/content_resource_api/ports/identifiers.py",
+    "src/content_resource_api/ports/metrics.py",
+    "src/content_resource_api/ports/secrets.py",
+    # Real WebDAV I/O adapter — requires live WebDAV in integration env
+    "src/content_resource_api/adapters/webdav/repository.py",
+    # Entry point
+    "src/content_resource_api/__main__.py",
+]
+
+[tool.coverage.report]
+fail_under = 92
+show_missing = true

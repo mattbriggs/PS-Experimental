@@ -1,0 +1,10 @@
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: content-resource-api
+  namespace: content-resources
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: content-resource-api
+  minAvailable: 1

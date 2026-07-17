@@ -1,0 +1,50 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+env/
+.env
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Testing and coverage
+.pytest_cache/
+.coverage
+.coverage.*
+build/coverage*
+htmlcov/
+
+# Type checking
+.mypy_cache/
+.ruff_cache/
+.pyright/
+
+# Docs
+site/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*~
+
+# Docker
+.dockerignore
+
+# Compose overrides (developer local)
+compose.override.yaml
+
+# Secrets — never commit
+*.pem
+*.key
+*.p12
+secrets/
+
+# macOS
+.DS_Store
