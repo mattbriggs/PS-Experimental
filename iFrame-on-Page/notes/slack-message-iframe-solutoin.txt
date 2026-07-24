@@ -1,0 +1,11 @@
+Jethro is only in ps-portal-imps channel.  But @TracyB recently talked with another customer about iFrame I think so she might have inputs here first.
+matt.briggs  [11:01 AM]
+Copied the comment to ps-portal. Thanks! Matt (edited) 
+TracyB  [11:05 AM]
+As long as you use the <object> element and outputclass="iframe", we don't really care. see example here: https://glados.heretto.com/share/1088fc10-7f70-4a9f-adbd-9ef5da102139 (edited) 
+[11:06 AM]and it's this portal URL: https://dev23ridgeline.portal.heretto.com/en/use-ridgeline/content-for-styling/embedded-iframes
+dev23ridgeline.portal.heretto.comEmbedded iFrames | Ridgeline Product DocumentationTracyB  [11:14 AM]
+@matt.briggs ^s
+
+
+https://dev23ridgeline.portal.heretto.com/en/use-ridgeline/content-for-styling/embedded-iframes

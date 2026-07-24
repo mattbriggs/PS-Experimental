@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="iframe-examples" xml:lang="en-us">
+  <title>Embedded iframes</title>
+  <shortdesc>Examples of third-party content embedded in a Portal page using the DITA
+      <xmlelement>object</xmlelement> element with <xmlatt>outputclass</xmlatt> set to
+      <option>iframe</option>.</shortdesc>
+  <body>
+
+    <section id="google-form">
+      <title>Google Form</title>
+      <object
+        data="https://docs.google.com/forms/d/e/1FAIpQLSfOZuPeBnuvWMsj96OnCqMlGc8FYtMuBSHlztzTWP-hnF7Lrw/viewform?embedded=true"
+        height="800"
+        outputclass="iframe">
+        <param name="frameborder" value="0"/>
+        <param name="width" value="100%"/>
+        <param name="allowfullscreen"/>
+      </object>
+    </section>
+
+    <section id="scribe-tutorial">
+      <title>Scribe tutorial</title>
+      <object
+        data="https://scribehow.com/embed/Batch_Reports_Actions__ISMO3tteRAKS-5W5NKWKbA"
+        height="800"
+        outputclass="iframe">
+        <param name="frameborder" value="0"/>
+        <param name="width" value="100%"/>
+        <param name="allowfullscreen"/>
+      </object>
+    </section>
+
+    <section id="navattic-demo">
+      <title>Navattic product demo</title>
+      <object
+        data="https://capture.navattic.com/cmds3cta2000104l58nkyax36"
+        height="750"
+        outputclass="iframe">
+        <param name="frameborder" value="0"/>
+        <param name="width" value="100%"/>
+        <param name="allowfullscreen"/>
+      </object>
+    </section>
+
+  </body>
+</topic>

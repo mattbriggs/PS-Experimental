@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="topic-6471" xml:lang="en-us" class="- topic/topic "><title class="- topic/title ">Embedded iFrames</title><shortdesc class="- topic/shortdesc "/><body class="- topic/body "><section class="- topic/section ">
+            <title class="- topic/title ">Google Form</title>
+            <object data="https://docs.google.com/forms/d/e/1FAIpQLSfOZuPeBnuvWMsj96OnCqMlGc8FYtMuBSHlztzTWP-hnF7Lrw/viewform?embedded=true" height="800" outputclass="iframe" class="- topic/object "><param name="frameborder" value="0" class="- topic/param "/><param name="width" value="100%" class="- topic/param "/><param name="allowfullscreen" class="- topic/param "/></object>
+        </section><section class="- topic/section ">
+            <title class="- topic/title ">Scribe</title>
+            <object data="https://scribehow.com/embed/Batch_Reports_Actions__ISMO3tteRAKS-5W5NKWKbA" height="800" outputclass="iframe" class="- topic/object "><param name="frameborder" value="0" class="- topic/param "/><param name="width" value="100%" class="- topic/param "/><param name="allowfullscreen" class="- topic/param "/></object>
+        </section><section class="- topic/section ">
+            <title class="- topic/title ">Navattic</title>
+            <object data="https://capture.navattic.com/cmds3cta2000104l58nkyax36" height="750" outputclass="iframe" class="- topic/object "><param name="frameborder" value="0" class="- topic/param "/><param name="width" value="100%" class="- topic/param "/><param name="allowfullscreen" class="- topic/param "/></object>
+        </section></body></topic>
